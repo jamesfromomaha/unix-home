@@ -108,7 +108,11 @@ function str2hex() {
 }
 
 # functions to make sure the window title is always [root@]server:pwd and
-# that the terminal size is always 80x48
+# that the terminal size is always 132x48
+term_width=112
+vim_width=112
+vimdiff_width=173
+
 function term-set-caption() {
   caption="$NAME$HOSTNAME $(pwd |sed "s|$HOME|~|")"
   if [[ $# == 1 ]]
@@ -118,7 +122,7 @@ function term-set-caption() {
   echo -ne "\e]0;$caption\a"
 }
 function term-set-cols() {
-  cols=80
+  cols=term_width
   if [[ $# == 1 ]]
   then
     cols="$1"
@@ -176,10 +180,10 @@ function fg() {
   vimdiff=[[ -n $(jobs $1 |grep --word-regexp 'vimdiff') ]]
   if [[ $vim ]]
   then
-    term-set-cols 84
+    term-set-cols $vim_width
   elif [[ $vimdiff ]]
   then
-    term-set-cols 169
+    term-set-cols $vimdiff_width
   fi
   builtin fg $1
   term-set-caption
@@ -217,25 +221,24 @@ function pdprog() {
   fi
 }
 function vim() {
-  # relative numbering uses the left four columns, so it needs 84 columns
-  term-set-cols 84
+  term-set-cols $vim_width
   command vim "$@"
   term-set-cols
 }
 function svim() {
-  term-set-cols 84
+  term-set-cols $vim_width
   sudo $(which vim) "$@"
   term-set-cols
 }
 function vimdiff() {
   # relative numbering uses the left six columns of each file, and the middle
   # column is the split separator, so it needs 173 columns
-  term-set-cols 173
+  term-set-cols $vimdiff_width
   command vimdiff "$@"
   term-set-cols
 }
 function svimdiff() {
-  term-set-cols 173
+  term-set-cols $vimdiff_width
   sudo $(which vimdiff) "$@"
   term-set-cols
 }

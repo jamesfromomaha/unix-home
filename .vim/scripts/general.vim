@@ -28,6 +28,10 @@ augroup cindent
   autocmd FileType c,cpp,cs,java,javascript set cindent
 augroup end
 
+" set make columns 81+ have a slightly lighter background color
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn=join(range(81, 999), ",")
+
 " case-smart searching that searches while typing and highlights matches
 set hlsearch
 set ignorecase

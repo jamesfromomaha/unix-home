@@ -23,8 +23,8 @@ fi
 export HOSTNAME=$(echo $HOSTNAME |tr '[:upper:]' '[:lower:]')
 
 # terminal settings
-# xterm
-export TERM=xterm
+# xterm-256color
+export TERM=xterm-256color
 export TERMINAL=$TERM
 # utf8
 export LANG=en_US.utf8
@@ -41,7 +41,7 @@ export LC_TELEPHONE=$LANG
 export LC_MEASUREMENT=$LANG
 export LC_IDENTIFICATION=$LANG
 # window title and size
-echo -ne "\e[8;48;80t"
+echo -ne "\e[8;48;112t"
 echo -ne "\e]0;$NAME$HOSTNAME ~\a"
 
 # bash settings
