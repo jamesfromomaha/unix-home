@@ -109,8 +109,8 @@ function str2hex() {
 
 # functions to make sure the window title is always [root@]server:pwd and
 # that the terminal size is always 132x48
-term_width=112
-vim_width=112
+term_width=132
+vim_width=132
 vimdiff_width=173
 
 function term-set-caption() {

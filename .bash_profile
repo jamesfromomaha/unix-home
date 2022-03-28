@@ -41,7 +41,7 @@ export LC_TELEPHONE=$LANG
 export LC_MEASUREMENT=$LANG
 export LC_IDENTIFICATION=$LANG
 # window title and size
-echo -ne "\e[8;48;112t"
+echo -ne "\e[8;48;132t"
 echo -ne "\e]0;$NAME$HOSTNAME ~\a"
 
 # bash settings
