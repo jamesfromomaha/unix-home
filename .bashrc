@@ -122,7 +122,7 @@ function term-set-caption() {
   echo -ne "\e]0;$caption\a"
 }
 function term-set-cols() {
-  cols=term_width
+  cols=$term_width
   if [[ $# == 1 ]]
   then
     cols="$1"
