@@ -4,8 +4,10 @@
 let mapleader = '\'
 let g:mapleader = '\'
 
-" preserve undo history
-execute 'set undodir=' . (isdirectory(Path('/etc/vimundo/')) ? Path('/etc/vimundo/') : Path($MYVIM . '/undo/'))
+" store files under .vim, not in the working directory
+set backupdir=~/.vim/.backups//
+set directory=~/.vim/.swaps//
+set undodir=~/.vim/.undos//
 set undofile
 
 " NO BELL
@@ -44,9 +46,6 @@ set modeline
 
 " fold on {{{...}}}
 set foldmethod=marker
-
-" don't leave turds all over the place
-set nobackup
 
 " reselect visual block after shifting
 vnoremap < <gv
