@@ -10,5 +10,8 @@ source ~/.vim/scripts/readfile.vim
 source ~/.vim/scripts/save.vim
 source ~/.vim/scripts/splits.vim
 
+" do this last
+source ~/.vim/scripts/plugins.vim
+
 filetype indent on
 filetype plugin on

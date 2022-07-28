@@ -45,7 +45,6 @@ alias llldrt='ls -hlrt --color=always |grep ^d'
 alias llldart='ls -hlArt --color=always |grep ^d'
 
 # quick dir change
-alias uncd='cd -'
 export BINDIR=/usr/local/bin
 export LOGDIR=/var/log
 alias cdbin="cd $BINDIR"
@@ -57,7 +56,6 @@ alias pdlog="pushd $LOGDIR"
 alias c=clear
 alias pd=pushd
 alias x=exit
-alias y='echo -n'  # make y a noop
 
 # remove a file's contents, creating it if need be
 function truncate() {
@@ -98,17 +96,11 @@ function popd() {
 }
 
 # modify interactive sudo (sudo -i) to make it pass along the current directory
-# as CDDIR, and shim -i with `sudo su -` on boxes that don't support -i
+# as CDDIR
 function sudo() {
   if [[ $1 == -i ]]
   then
-    if command sudo -h 2>&1 |grep -q -- -i
-    then
-      command sudo "$@" CDDIR="`pwd`"
-    else
-      command sudo /bin/su --login -- root -c \
-        "CDDIR='`pwd`' PROFILE_SOURCED= SUDO_USER=$LOGNAME bash --login"
-    fi
+    command sudo "$@" CDDIR="`pwd`"
   else
     command sudo "$@"
   fi
