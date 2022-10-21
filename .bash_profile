@@ -55,7 +55,11 @@ shopt -s nocaseglob extglob
 # vi-style command line editing
 set -o vi
 # add /usr/local/bin, ~/bin, and current working directory to path
-export PATH=$PATH:/usr/local/bin:~/bin:.
+if [[ ! $PATH =~ (^|:)/usr/local/bin(:|$) ]]
+then
+  export PATH=$PATH:/usr/local/bin
+fi
+export PATH=$PATH:~/bin:.
 # history settings
 export HISTTIMEFORMAT='%F %T  '
 export HISTCONTROL=ignoredups
