@@ -1,3 +1,9 @@
+if [[ $LOGNAME == root && -z $FROM_PROFILE ]]
+then
+  source .bash_profile
+  return
+fi
+
 # colors for grep and ls
 alias grep='grep --color=auto'
 alias ls='ls -G'

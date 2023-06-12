@@ -10,10 +10,7 @@ NAME=
 if [[ $LOGNAME == root ]]
 then
   NAME=$LOGNAME@
-  export HOME=~jwhite
-  cd
 fi
-cd
 # get host name if we don't have it already
 export HOSTNAME=${HOSTNAME##*@}
 if [[ -z $HOSTNAME ]]
@@ -27,19 +24,21 @@ export HOSTNAME=$(echo $HOSTNAME |tr '[:upper:]' '[:lower:]')
 export TERM=xterm-256color
 export TERMINAL=$TERM
 # utf8
-export LANG=en_US.utf8
-export LC_ADDRESS=$LANG
-export LC_COLLATE=$LANG
-export LC_CTYPE=$LANG
-export LC_IDENTIFICATION=$LANG
-export LC_MEASUREMENT=$LANG
-export LC_MESSAGES=$LANG
-export LC_MONETARY=$LANG
-export LC_NAME=$LANG
-export LC_NUMERIC=$LANG
-export LC_PAPER=$LANG
-export LC_TELEPHONE=$LANG
-export LC_TIME=$LANG
+export LANG=en_US.UTF-8
+export LC_CTYPE=$LANG 2>/dev/null
+export LC_ALL=$LANG 2>/dev/null
+export LC_ADDRESS=$LANG 2>/dev/null
+export LC_COLLATE=$LANG 2>/dev/null
+export LC_CTYPE=$LANG 2>/dev/null
+export LC_IDENTIFICATION=$LANG 2>/dev/null
+export LC_MEASUREMENT=$LANG 2>/dev/null
+export LC_MESSAGES=$LANG 2>/dev/null
+export LC_MONETARY=$LANG 2>/dev/null
+export LC_NAME=$LANG 2>/dev/null
+export LC_NUMERIC=$LANG 2>/dev/null
+export LC_PAPER=$LANG 2>/dev/null
+export LC_TELEPHONE=$LANG 2>/dev/null
+export LC_TIME=$LANG 2>/dev/null
 
 # bash settings
 # prompts
@@ -68,7 +67,7 @@ export HISTIGNORE="c:exit:fg:l:ll:ls:sudo -i:which *:x"
 # rc file
 if [[ -f ~/.bashrc ]]
 then
-  source ~/.bashrc
+  FROM_PROFILE=true source ~/.bashrc
 fi
 
 # bash
