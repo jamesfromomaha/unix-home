@@ -61,10 +61,6 @@ alias cdlog="cd $LOGDIR"
 alias pdbin="pushd $BINDIR"
 alias pdlog="pushd $LOGDIR"
 
-# miscellaneous commands
-alias c=clear
-alias pd=pushd
-alias x=exit
 
 # remove a file's contents, creating it if need be
 function truncate() {
