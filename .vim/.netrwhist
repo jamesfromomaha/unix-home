@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/james.white/firstup/kai/src/components/publisher/pages/Design/PersonalizedFields/Modals'
 let g:netrw_dirhist_4='/home/ec2-user/socialchorus/iam/app/controllers/oauth/authorizations'
 let g:netrw_dirhist_3='/home/ec2-user/socialchorus/bossanova/app/api_clients/endpoints/governor'
 let g:netrw_dirhist_2='/home/ec2-user/socialchorus/bossanova/app/api_clients/endpoints'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_9='/home/ec2-user/socialchorus/pony/app/models/user'
 let g:netrw_dirhist_8='/home/ec2-user/.rbenv'
 let g:netrw_dirhist_7='/home/ec2-user/socialchorus/bossanova/app/models/content_channel'
 let g:netrw_dirhist_6='/home/ec2-user/socialchorus/pony/spec/models'
-let g:netrw_dirhist_5='/home/ec2-user/socialchorus/bossanova/app/helpers'

@@ -2,7 +2,7 @@
 
 " syntax highlighting
 syntax on
-colorscheme desert
+colorscheme default
 
 " display row and column of cursor as well as % scrolled
 set ruler
