@@ -1,4 +1,7 @@
 [alias]
+  amend = commit --amend
+  ci = commit
+  co = checkout
   coax = checkout develop_ax_deploy
   cofix = checkout sass-temp-fix
   coma = checkout master
@@ -11,5 +14,5 @@
 [merge]
   tool = vimdiff
 [user]
-	email = james.white@firstup.io
-	name = James White
+  email = james.white@firstup.io
+  name = James White
