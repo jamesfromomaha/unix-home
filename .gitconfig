@@ -1,0 +1,15 @@
+[alias]
+  coax = checkout develop_ax_deploy
+  cofix = checkout sass-temp-fix
+  coma = checkout master
+  core = checkout release
+  mt = mergetool
+  pushup = push -u origin HEAD
+  stat = status
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+[user]
+	email = james.white@firstup.io
+	name = James White
