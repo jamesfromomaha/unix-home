@@ -83,36 +83,55 @@ function vimgrep() {
 function pushd() {
   if [[ $# == 0 ]]
   then
-    builtin pushd ~ >/dev/null
-  else
-    builtin pushd "$@" >/dev/null
+    pushd ~
+    return
   fi
-  if [[ $? == 0 ]]
-  then
-    echo :: $(dirs |cut --only-delimited --delimiter=' ' --fields=2-)
-  fi
+  builtin pushd "$@" >/dev/null
+  [[ $? == 0 ]] && echo :: `dirs |cut -s -d ' ' -f 2-`
 }
 function popd() {
   builtin popd "$@" >/dev/null
-  if [[ $? == 0 ]]
-  then
-    echo :: $(dirs |cut --only-delimited --delimiter=' ' --fields=2-)
-  fi
+  [[ $? == 0 ]] && echo :: `dirs |cut -s -d ' ' -f 2-`
 }
 
 # modify interactive sudo (sudo -i) to make it pass along the current directory
-# as CDDIR
+# in the CDDIR environment variable
 function sudo() {
-  if [[ $1 == -i ]]
-  then
-    command sudo "$@" CDDIR="`pwd`"
-  else
-    command sudo "$@"
-  fi
+  [[ $1 == -i ]] && cwd="`pwd`"
+  CDDIR="$cwd" command sudo "$@"
 }
 
-# server-local settings
-if [[ -f ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+# generate a data url from an image
+function img2url() {
+  if [[ $# != 1 || ! -f $1 ]]
+  then
+    echo 'Usage:' >&2
+    echo "  $0 FILENAME" >&2
+    return
+  fi
+
+  case `echo -n "${1##*.}" |tr [A-Z] [a-z]` in
+  apng) header="data:image/apng;base64,";;
+  avif) header="data:image/avif;base64,";;
+  bmp) header="data:image/bmp;base64,";;
+  gif) header="data:image/gif;base64,";;
+  ico|.cur) header="data:image/x-icon;base64,";;
+  jpg|.jpeg|.jfif|.pjpeg|.pjp) header="data:image/jpeg;base64,";;
+  png) header="data:image/png;base64,";;
+  svg) header="data:image/svg+xml;base64,";;
+  tif|.tiff) header="data:image/tiff;base64,";;
+  webp) header="data:image/webp;base64,";;
+  esac
+
+  if [[ -z $header ]]
+  then
+    echo 'Invalid file type' >&2
+    return
+  fi
+
+  echo -n "$header"
+  base64 -i $1 |tr -d "\n"
+}
+
+[[ -f ~/.local/bashrc ]] && source ~/.local/bashrc
+[[ -d ~/.local/rc.d ]] && for rcfile in ~/.local/rc.d/*; do source $rcfile; done

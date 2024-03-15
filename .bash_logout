@@ -1,4 +1,1 @@
-if [[ -f ~/.local_logout ]]
-then
-  source ~/.local_logout
-fi
+[[ -f ~/.local/bash_logout ]] && source ~/.local/bash_logout

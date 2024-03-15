@@ -16,3 +16,7 @@
 [user]
   email = james.white@firstup.io
   name = James White
+[safe]
+  directory = *
+[pull]
+  ff = only

@@ -1,22 +1,13 @@
-# sometimes the local machine needs to apply profile stuff before the common set
-if [[ -f ~/.local_preprofile ]]
-then
-  source ~/.local_preprofile
-fi
+# local profile
+[[ -f ~/.local/profile ]] && source ~/.local/profile
 
 # names
 # root or not root
 NAME=
-if [[ $LOGNAME == root ]]
-then
-  NAME=$LOGNAME@
-fi
+[[ $LOGNAME == root ]] && NAME=$LOGNAME@
 # get host name if we don't have it already
 export HOSTNAME=${HOSTNAME##*@}
-if [[ -z $HOSTNAME ]]
-then
-  export HOSTNAME=$(uname -n)
-fi
+[[ -z $HOSTNAME ]] && export HOSTNAME=$(uname -n)
 export HOSTNAME=$(echo $HOSTNAME |tr '[:upper:]' '[:lower:]')
 
 # terminal settings
@@ -49,32 +40,20 @@ else
   export PS1='`[[ $(jobs -l |wc -l |sed "s/^ *//") != 0 ]] && echo -n "\[\e[0;33m\][\j]\[\e[m\] "; echo -n "\[\e[36m\]'$NAME$HOSTNAME'\[\e[m\]:\w \[\e[36m\]>\[\e[m\] "`'
 fi
 export PS2='> '
-# ignore case when globbing
-shopt -s nocaseglob extglob
+# allow extra stuff like !(everything_but_this.file)
+shopt -s extglob
 # vi-style command line editing
 set -o vi
 # add /usr/local/bin, ~/bin, and current working directory to path
-if [[ ! $PATH =~ (^|:)/usr/local/bin(:|$) ]]
-then
-  export PATH=$PATH:/usr/local/bin
-fi
+[[ ! $PATH =~ (^|:)/usr/local/bin(:|$) ]] && export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:~/bin:.
 # history settings
 export HISTTIMEFORMAT='%F %T  '
 export HISTCONTROL=ignoredups
 export HISTIGNORE="c:exit:fg:l:ll:ls:sudo -i:which *:x"
 
-# rc file
-if [[ -f ~/.bashrc ]]
-then
-  FROM_PROFILE=true source ~/.bashrc
-fi
-
-# bash
-if [[ -f ~/.local_profile ]]
-then
-  source ~/.local_profile
-fi
+[[ -f ~/.bashrc ]] && FROM_PROFILE=true source ~/.bashrc
+[[ -f ~/.local/bash_profile ]] && source ~/.local/bash_profile
 
 # if there's a CDDIR environment variable, cd to that directory
 if [[ -n $CDDIR ]]
