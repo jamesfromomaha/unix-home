@@ -4,80 +4,22 @@ then
   return
 fi
 
-# colors for grep and ls
+
+alias cdbin='cd /usr/local/bin'
+alias cdvlog='cd /var/log'
+alias gbr='git branch'
 alias grep='grep --color=auto'
 alias ls='ls -G'
-
-# less typing
+alias pdbin='pushd /usr/local/bin'
+alias pdvlog='pushd /var/log'
 alias vi=vim
 
-# aliases
-alias l1='ls -1'
-alias la='ls -A'
-alias lr='ls -r'
-alias lt='ls -t'
-alias lar='ls -Ar'
-alias lat='ls -At'
-alias lrt='ls -rt'
-alias lart='ls -Art'
-alias ll='ls -gho'
-alias lla='ls -Agho'
-alias llr='ls -ghor'
-alias llt='ls -ghot'
-alias llar='ls -Aghor'
-alias llat='ls -Aghot'
-alias llrt='ls -ghort'
-alias llart='ls -Aghort'
-alias lld='ls -gho --color=always |grep ^d'
-alias llda='ls -Agho --color=always |grep ^d'
-alias lldr='ls -ghor --color=always |grep ^d'
-alias lldt='ls -ghot --color=always |grep ^d'
-alias lldar='ls -Aghor --color=always |grep ^d'
-alias lldat='ls -Aghot --color=always |grep ^d'
-alias lldrt='ls -ghort --color=always |grep ^d'
-alias lldart='ls -Aghort --color=always |grep ^d'
-alias lll='ls -hl'
-alias llla='ls -hlA'
-alias lllr='ls -hlr'
-alias lllt='ls -hlt'
-alias lllar='ls -hlAr'
-alias lllat='ls -hlAt'
-alias lllrt='ls -hlrt'
-alias lllart='ls -hlArt'
-alias llld='ls -hl --color=always |grep ^d'
-alias lllda='ls -hlA --color=always |grep ^d'
-alias llldr='ls -hlr --color=always |grep ^d'
-alias llldt='ls -hlt --color=always |grep ^d'
-alias llldar='ls -hlAr --color=always |grep ^d'
-alias llldat='ls -hlAt --color=always |grep ^d'
-alias llldrt='ls -hlrt --color=always |grep ^d'
-alias llldart='ls -hlArt --color=always |grep ^d'
-
-# quick dir change
-export BINDIR=/usr/local/bin
-export LOGDIR=/var/log
-alias cdbin="cd $BINDIR"
-alias cdlog="cd $LOGDIR"
-alias pdbin="pushd $BINDIR"
-alias pdlog="pushd $LOGDIR"
-
-
-# remove a file's contents, creating it if need be
 function truncate() {
-  for file in "$@"
-  do
-    echo -n >"$file"
-  done
+  [[ -f $file ]] && echo -n >"$file"
 }
 
-# convert input string to hex
 function str2hex() {
   echo -n "$1" |xxd |tr ' ' "\n" |sed --quiet '/^....$/p' |tr --delete "\n"
-}
-
-# vim files that match grep pattern
-function vimgrep() {
-  vim `grep -l "$@"`
 }
 
 function pushd() {
@@ -94,8 +36,7 @@ function popd() {
   [[ $? == 0 ]] && echo :: `dirs |cut -s -d ' ' -f 2-`
 }
 
-# modify interactive sudo (sudo -i) to make it pass along the current directory
-# in the CDDIR environment variable
+# make sudo -i pass the current directory to the elevated shell
 function sudo() {
   [[ $1 == -i ]] && cwd="`pwd`"
   CDDIR="$cwd" command sudo "$@"
@@ -132,6 +73,7 @@ function img2url() {
   echo -n "$header"
   base64 -i $1 |tr -d "\n"
 }
+
 
 [[ -f ~/.local/bashrc ]] && source ~/.local/bashrc
 [[ -d ~/.local/rc.d ]] && for rcfile in ~/.local/rc.d/*; do source $rcfile; done
