@@ -76,4 +76,3 @@ function img2url() {
 
 
 [[ -f ~/.local/bashrc ]] && source ~/.local/bashrc
-[[ -d ~/.local/rc.d ]] && for rcfile in ~/.local/rc.d/*; do source $rcfile; done
