@@ -19,6 +19,7 @@ set title
 
 " show line numbers as distance from cursor
 set relativenumber
+nnoremap <silent> <leader>num :set relativenumber!<cr>
 
 " line wrapping
 set nowrap
