@@ -3,7 +3,8 @@
 syntax on
 colorscheme default
 
-set list listchars=tab:▸\ ,precedes:<,extends:>
+set list
+set listchars=tab:▸\ ,precedes:<,extends:>
 set ruler
 set showmatch
 set showtabline=0
@@ -15,12 +16,14 @@ nnoremap <silent> <leader>rnum :set relativenumber! <cr>
 vnoremap <silent> <leader>rnum :set relativenumber! <cr>
 
 " line wrapping
-set nowrap
 set display=lastline
-set list fillchars=lastline:—
+set fillchars+=lastline:⋯
+set nolinebreak
+set nowrap
 inoremap <silent> <leader>wrap <c-o> :set wrap! <cr>
 nnoremap <silent> <leader>wrap :set wrap! <cr>
 vnoremap <silent> <leader>wrap :set wrap! <cr>
+nnoremap <silent> <leader>break :set linebreak! <cr>
 
 " show line of current cursor (in current window only)
 set cursorline
