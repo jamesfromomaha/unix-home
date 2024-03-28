@@ -15,8 +15,8 @@ set noerrorbells
 set t_vb=
 set visualbell
 
-" let backspace erase anything
 set backspace=2
+set modeline
 
 " make tabs 2 spaces, shift 2 spaces, tab => spaces, smart autoindenting
 set autoindent
@@ -35,13 +35,8 @@ set hlsearch
 set ignorecase
 set incsearch
 set smartcase
-nnoremap <silent> <leader>nh :nohl<cr>
-
-" honor modelines
-set modeline
-
-" fold on {{{...}}}
-set foldmethod=marker
+nnoremap <silent> <leader>case :set ignorecase! smartcase! <cr>
+nnoremap <silent> <leader>high :nohlsearch <cr>
 
 " reselect visual block after shifting
 vnoremap < <gv

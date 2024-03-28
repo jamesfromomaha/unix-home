@@ -13,7 +13,7 @@ set viminfo^=%
 set hidden
 
 " buffer mappings
-nnoremap <leader>be :enew<cr>
-nnoremap <leader>bn :bnext<cr>
-nnoremap <leader>bp :bprev<cr>
-nnoremap <leader>bq :bp <bar> bd #<cr>
+nnoremap <leader>be :enew <cr>
+nnoremap <leader>bn :bnext <cr>
+nnoremap <leader>bp :bprev <cr>
+nnoremap <leader>bq :bprev <bar> bd # <cr>

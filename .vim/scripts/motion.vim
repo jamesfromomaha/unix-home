@@ -24,15 +24,15 @@ function! NextIndentLine(inclusive, forward, out)
   endwhile
 endfunction
 
-nnoremap <silent> [l :call NextIndentLine(1, 0, 0)<CR>
-nnoremap <silent> ]l :call NextIndentLine(1, 1, 0)<CR>
-nnoremap <silent> [L :call NextIndentLine(1, 0, 1)<CR>
-nnoremap <silent> ]L :call NextIndentLine(1, 1, 1)<CR>
-vnoremap <silent> [l <Esc>:call NextIndentLine(1, 0, 0)<CR>m`gv``
-vnoremap <silent> ]l <Esc>:call NextIndentLine(1, 1, 0)<CR>m`gv``
-vnoremap <silent> [L <Esc>:call NextIndentLine(1, 0, 1)<CR>m`gv``
-vnoremap <silent> ]L <Esc>:call NextIndentLine(1, 1, 1)<CR>m`gv``
-onoremap <silent> [l :call NextIndentLine(1, 0, 0)<CR>
-onoremap <silent> ]l :call NextIndentLine(1, 1, 0)<CR>
-onoremap <silent> [L :call NextIndentLine(0, 0, 1)<CR>
-onoremap <silent> ]L :call NextIndentLine(0, 1, 1)<CR>
+nnoremap <silent> [l :call NextIndentLine(1, 0, 0) <cr>
+nnoremap <silent> ]l :call NextIndentLine(1, 1, 0) <cr>
+nnoremap <silent> [L :call NextIndentLine(1, 0, 1) <cr>
+nnoremap <silent> ]L :call NextIndentLine(1, 1, 1) <cr>
+vnoremap <silent> [l <c-o> :call NextIndentLine(1, 0, 0) <cr> m`gv``
+vnoremap <silent> ]l <c-o> :call NextIndentLine(1, 1, 0) <cr> m`gv``
+vnoremap <silent> [L <c-o> :call NextIndentLine(1, 0, 1) <cr> m`gv``
+vnoremap <silent> ]L <c-o> :call NextIndentLine(1, 1, 1) <cr> m`gv``
+onoremap <silent> [l :call NextIndentLine(1, 0, 0) <cr>
+onoremap <silent> ]l :call NextIndentLine(1, 1, 0) <cr>
+onoremap <silent> [L :call NextIndentLine(0, 0, 1) <cr>
+onoremap <silent> ]L :call NextIndentLine(0, 1, 1) <cr>
