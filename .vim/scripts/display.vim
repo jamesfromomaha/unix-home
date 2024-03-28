@@ -6,6 +6,7 @@ colorscheme default
 set list listchars=tab:▸\ ,precedes:<,extends:>
 set ruler
 set showmatch
+set showtabline=0
 
 " show line numbers as distance from cursor
 set relativenumber
