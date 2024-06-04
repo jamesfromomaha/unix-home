@@ -49,9 +49,10 @@ export PS2='> '
 shopt -s extglob
 # vi-style command line editing
 set -o vi
-# add /usr/local/bin, ~/bin, and current working directory to path
+# add /usr/local/bin, ~/.local/bin, and current working directory to path
 [[ ! $PATH =~ (^|:)/usr/local/bin(:|$) ]] && export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:~/bin:.
+[[ -d ~/.local/bin ]] && export PATH=$PATH:~/.local/bin:.
+export PATH=$PATH:.
 # history settings
 export HISTTIMEFORMAT='%F %T  '
 export HISTCONTROL=ignoredups

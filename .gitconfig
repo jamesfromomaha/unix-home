@@ -3,6 +3,8 @@
   ci = commit
   co = checkout
   coax = checkout develop_ax_deploy
+  coeco = checkout develop_eco
+  coegg = checkout develop_egg
   cofix = checkout sass-temp-fix
   coma = checkout master
   core = checkout release
