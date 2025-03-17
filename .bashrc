@@ -42,6 +42,7 @@ function sudo() {
   CDDIR="$cwd" command sudo "$@"
 }
 
+
 # generate a data url from an image
 function img2url() {
   if [[ $# != 1 || ! -f $1 ]]
@@ -72,6 +73,34 @@ function img2url() {
 
   echo -n "$header"
   base64 -i $1 |tr -d "\n"
+}
+
+
+# print out a header
+function heading() {
+  case $1 in
+  1)
+    printf "\n\e[35m"
+    echo '========================================================================'
+    echo -n '=  '
+    shift
+    ;;
+  2)
+    printf "\e[36m"
+    echo '------------------------------------------------------------------------'
+    echo -n '-  '
+    shift
+    ;;
+  3)
+    printf "\e[34m"
+    shift
+    ;;
+  *)
+    printf "\e[34m"
+    ;;
+  esac
+  echo "$@"
+  printf "\e[m\n"
 }
 
 
