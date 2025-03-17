@@ -10,7 +10,7 @@ set directory=~/.vim/.swaps//
 set undodir=~/.vim/.undos//
 set undofile
 
-" NO BELL
+" NO BELL. PLEASE NO BELL
 set noerrorbells
 set t_vb=
 set visualbell
@@ -52,3 +52,6 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
+
+" don't add 'missing' newlines to the end of the file
+set nofixeol

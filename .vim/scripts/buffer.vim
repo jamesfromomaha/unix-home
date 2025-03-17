@@ -1,7 +1,7 @@
 " buffer/window management
 
 " return to last edit position when opening files
-augroup lastpos
+augroup last_pos
   autocmd!
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup end
