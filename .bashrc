@@ -12,7 +12,6 @@ alias grep='grep --color=auto'
 alias ls='ls -G'
 alias pdbin='pushd /usr/local/bin'
 alias pdvlog='pushd /var/log'
-alias vi=vim
 
 function truncate() {
   [[ -f $file ]] && echo -n >"$file"
