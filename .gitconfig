@@ -8,6 +8,7 @@
   cofix = checkout sass-temp-fix
   coma = checkout master
   core = checkout release
+  cp = cherry-pick
   mt = mergetool
   pushup = push -u origin HEAD
   stat = status
