@@ -2,7 +2,7 @@
   amend = commit --amend
   ci = commit
   co = checkout
-  coax = checkout develop_ax_deploy
+  coax = !git checkout develop_ax_deploy 2>/dev/null || git checkout develop_ax
   coeco = checkout develop_eco
   coegg = checkout develop_egg
   cofix = checkout sass-temp-fix
