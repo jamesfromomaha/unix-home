@@ -78,16 +78,19 @@ function img2url() {
 
 # print out a header
 function heading() {
+  repetitions=`seq 2 $(stty size |cut -d\  -f2)`
   case $1 in
   1)
     printf "\n\e[35m"
-    echo '========================================================================'
+    for i in $repetitions; do echo -n '='; done
+    echo
     echo -n '=  '
     shift
     ;;
   2)
     printf "\e[36m"
-    echo '------------------------------------------------------------------------'
+    for i in $repetitions; do echo -n '-'; done
+    echo
     echo -n '-  '
     shift
     ;;
