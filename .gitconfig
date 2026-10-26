@@ -8,8 +8,10 @@
   cofix = checkout sass-temp-fix
   coma = !git checkout master 2>/dev/null || git checkout main
   core = checkout release
+  corema = !git checkout release 2>/dev/null || git checkout master 2>/dev/null || git checkout main
   cp = cherry-pick
   curbr = branch --show-current
+  fwl = push --force-with-lease
   mt = mergetool
   pushup = push -u origin HEAD
   stat = status
